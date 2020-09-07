@@ -1,0 +1,39 @@
+.currency-wrapper {
+  margin-top: 70px;
+}
+.currency-image-wrapper {
+    width: 100px;
+    height: 70px;
+    border-radius: 25px;
+}
+
+.currency-image-wrapper img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.currency-row {
+    border: black dashed 1px;
+    margin-bottom: 10px;
+    padding: 10px 5px 10px 5px;
+}
+
+.currency-name {
+    font-size: 1.1em;
+    margin-left: 20px;
+}
+
+.currency-rate {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.currency-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.currency-name-flag {
+    display: flex;
+}
