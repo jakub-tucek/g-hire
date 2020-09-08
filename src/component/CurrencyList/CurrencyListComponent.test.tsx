@@ -26,24 +26,26 @@ const currency = {
   precision: 1,
 } as CurrencyModel;
 
-test('that currency list is rendered', () => {
-  const currencyList = [currency];
-  const { getByText } = render(<CurrencyListComponent currencies={currencyList} />);
+describe('test currency list', () => {
+  test('that currency list is rendered', () => {
+    const currencyList = [currency];
+    const { getByText } = render(<CurrencyListComponent currencies={currencyList} />);
 
-  const currencyText = getByText(/CZK/i);
-  expect(currencyText).toBeInTheDocument();
+    const currencyText = getByText(/CZK/i);
+    expect(currencyText).toBeInTheDocument();
 
-  const exchangeRate = getByText(/1.5/i);
-  expect(exchangeRate).toBeInTheDocument();
-});
+    const exchangeRate = getByText(/1.5/i);
+    expect(exchangeRate).toBeInTheDocument();
+  });
 
-test('that currency without exchange rate wont be rendered', () => {
-  const invalidCurrency = { ...currency };
-  invalidCurrency.exchangeRate = undefined;
+  test('that currency without exchange rate wont be rendered', () => {
+    const invalidCurrency = { ...currency };
+    invalidCurrency.exchangeRate = undefined;
 
-  const currencyList = [invalidCurrency];
-  const { queryByText } = render(<CurrencyListComponent currencies={currencyList} />);
+    const currencyList = [invalidCurrency];
+    const { queryByText } = render(<CurrencyListComponent currencies={currencyList} />);
 
-  const currencyText = queryByText(/CZK/i);
-  expect(currencyText).toBe(null);
+    const currencyText = queryByText(/CZK/i);
+    expect(currencyText).toBe(null);
+  });
 });

@@ -4,7 +4,7 @@ function HeaderComponent() {
   return (
     <header>
       <nav className="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">George FE test</a>
+        <a className="navbar-brand" href="#home">George FE test</a>
         <button
           className="navbar-toggler"
           type="button"

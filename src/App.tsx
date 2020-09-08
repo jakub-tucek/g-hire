@@ -5,18 +5,18 @@ import CurrencyListComponent from './component/CurrencyList/CurrencyListComponen
 import HeaderComponent from './component/Header/HeaderComponent';
 import SearchBarComponent from './component/SearchBar/SearchBarComponent';
 import { CurrencyModel } from './domain/CurrencyModel';
-import { CurrencyService } from './service/CurrencyService';
+import CurrencyService from './service/CurrencyService';
 
-const currencySearchQueryParam = 'currencySearch'
+const currencySearchQueryParam = 'currencySearch';
 
 function setParameterToUrl(searchString: string | undefined) {
-  const searchParams = new URLSearchParams(window.location.search)
+  const searchParams = new URLSearchParams(window.location.search);
   if (searchString) {
     searchParams.set(currencySearchQueryParam, searchString);
   } else {
-    searchParams.delete(currencySearchQueryParam)
+    searchParams.delete(currencySearchQueryParam);
   }
-  const newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
+  const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
   window.history.pushState(null, '', newRelativePathQuery);
 }
 
@@ -25,8 +25,8 @@ function App() {
   const [defaultSearchString, defaultSearchStringChange] = useState<string>();
 
   function processSearchValueChange(searchString: string | undefined) {
-    const currencyListFiltered = CurrencyService.filterCurrencyList(searchString)
-    currencyListChange(currencyListFiltered)
+    const currencyListFiltered = CurrencyService.filterCurrencyList(searchString);
+    currencyListChange(currencyListFiltered);
 
     setParameterToUrl(searchString);
   }
@@ -35,18 +35,18 @@ function App() {
    * When list is not initialized - null/undefined, check query parameter first
    */
   if (!currencyList) {
-    const params = new URLSearchParams(window.location.search)
-    const defaultSearchString = params.get(currencySearchQueryParam) || undefined;
-    processSearchValueChange(defaultSearchString)
-    defaultSearchStringChange(defaultSearchString)
+    const params = new URLSearchParams(window.location.search);
+    const searchStringFromUrl = params.get(currencySearchQueryParam) || undefined;
+    processSearchValueChange(searchStringFromUrl);
+    defaultSearchStringChange(searchStringFromUrl);
   }
 
   return (
     <div className="App">
-      <HeaderComponent/>
-      <SearchBarComponent initialValue={defaultSearchString} onSearchValueChange={processSearchValueChange}/>
+      <HeaderComponent />
+      <SearchBarComponent initialValue={defaultSearchString} onSearchValueChange={processSearchValueChange} />
       <main>
-        {currencyList && <CurrencyListComponent currencies={currencyList}/>}
+        {currencyList && <CurrencyListComponent currencies={currencyList} />}
       </main>
     </div>
   );

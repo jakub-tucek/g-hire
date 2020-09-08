@@ -28,10 +28,18 @@ module.exports = {
     'linebreak-style': 'off',
     '@typescript-eslint/indent': 2,
     'react/jsx-tag-spacing': 1,
-    'jsx-a11y/anchor-is-valid': 0,
+    'jsx-a11y/anchor-is-valid': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     'object-curly-spacing': 1,
     'arrow-parens': 1,
     'comma-dangle': 1,
-    'array-callback-return': 0
+    'array-callback-return': 'off',
+    'max-len': [
+      'error',
+      {
+        'code': 140
+      }
+    ],
+    'consistent-return': 'off',
   }
 };

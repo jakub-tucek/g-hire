@@ -10,7 +10,7 @@ import FallbackImageComponent from '../FallbackImage/FallbackImageComponent';
 const createFlagUrlFromCurrencyId = (currencyId: string) => `/flags/${currencyId.slice(0, 2).toLocaleLowerCase()}.png`;
 
 function CurrencyListComponent(props: { currencies: CurrencyModel[] }) {
-  const {currencies} = props;
+  const { currencies } = props;
   const renderedCurrencies = currencies
     .filter((i) => i.exchangeRate)
     .map((currency) => (

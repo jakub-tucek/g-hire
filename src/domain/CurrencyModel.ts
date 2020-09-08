@@ -18,7 +18,7 @@ export interface CurrencyModel {
 export interface ExchangeRate {
   buy: number;
   middle: number;
-  sell: number;
+  sell?: number;
   indicator: number;
   lastModified: string;
 }
